@@ -1,0 +1,6 @@
+# Update with scripts/set-site-url.mjs after the first deploy.
+
+User-agent: *
+Allow: /
+
+Sitemap: https://example.com/sitemap.xml

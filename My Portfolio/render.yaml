@@ -1,0 +1,27 @@
+# Render Blueprint — deploys this portfolio as a free static site.
+# Import the repo at https://dashboard.render.com/blueprints
+#
+# After the first deploy, run:
+#   node scripts/set-site-url.mjs https://your-service.onrender.com
+# so the canonical URL, Open Graph image and sitemap point at the live site.
+
+services:
+  - type: web
+    name: niel-swartz-portfolio
+    runtime: static
+    buildCommand: "echo 'Static site - no build step required'"
+    staticPublishPath: ./
+    autoDeployTrigger: commit
+    headers:
+      - path: /*
+        name: X-Frame-Options
+        value: SAMEORIGIN
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
+      - path: /*
+        name: Referrer-Policy
+        value: strict-origin-when-cross-origin
+      - path: /*
+        name: Permissions-Policy
+        value: "camera=(), geolocation=(), microphone=()"
